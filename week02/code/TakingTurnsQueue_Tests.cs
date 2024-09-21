@@ -12,6 +12,10 @@ public class TakingTurnsQueueTests
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+    // #1 - Class PersonQueue used an object type of List instead of Queue for the property named _queue
+    // #2 - The method Enqueue of PersonQueue called the Insert method of _queue instead of the Enqueue method
+    // #3 - The method Dequeue of PersonQueue did not use the Dequeue method of _queue. What it used instead returned
+    // #4 - Method GetNextPerson of class TakingTurnsQueue was implemented incorrectly. It missed an important check.
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
