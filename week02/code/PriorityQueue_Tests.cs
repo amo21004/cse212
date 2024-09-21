@@ -44,9 +44,19 @@ public class PriorityQueueTests
     // Expected Result: Diamond, Gold, White Gold, Silver, Bronze
     // Defect(s) Found:
     // Inside method Dequeue of PriorityQueue:
-    // Index should start at 0 and be less than _queue.Count
+    //
+    // Index should start at 0 and be less than _queue.Count and not _queue.Count - 1
+    //
     // _queue[index].Priority should be > and not >=
-    // After var value = _queue[highPriorityIndex].Value;, the following should be added _queue.RemoveAt(highPriorityIndex);
+    //
+    // After:
+    //
+    //      var value = _queue[highPriorityIndex].Value;
+    //
+    // The following should be added:
+    //
+    //      _queue.RemoveAt(highPriorityIndex);
+    //
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();

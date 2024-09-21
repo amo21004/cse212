@@ -3,7 +3,7 @@
 /// </summary>
 public class PersonQueue
 {
-    private readonly Queue<Person> _queue = new();
+    private readonly List<Person> _queue = new();
 
     public int Length => _queue.Count;
 
@@ -13,13 +13,13 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Enqueue(person);
+        _queue.Add(person);
     }
 
     public Person Dequeue()
     {
-        var person = _queue.Dequeue();
-
+        var person = _queue[0];
+        _queue.RemoveAt(0);
         return person;
     }
 

@@ -12,10 +12,50 @@ public class TakingTurnsQueueTests
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
-    // #1 - Class PersonQueue used an object type of List instead of Queue for the property named _queue
-    // #2 - The method Enqueue of PersonQueue called the Insert method of _queue instead of the Enqueue method
-    // #3 - The method Dequeue of PersonQueue did not use the Dequeue method of _queue. What it used instead returned
-    // #4 - Method GetNextPerson of class TakingTurnsQueue was implemented incorrectly. It missed an important check.
+    //
+    // #1
+    //
+    // The class PersonQueue uses an object type of List instead of Queue for the property named _queue. Ideally, it should have used a Queue instead.
+    // I had a couple of options to fix this issue. I could have changed _queue to use a Queue. However, instead I chose to modify the Enqueue method inside PersonQueue
+    // so that I can continue to use a List.
+    //
+    // I change:
+    //
+    // _queue.Insert(0, person);
+    //
+    // to:
+    //
+    // _queue.Add(person);
+    //
+    // THis approach required the least number of changes. Had I changed _queue to use a Queue, it would have require more than a couple of changes.
+    //
+    //
+    // #2
+    //
+    // The second problem was inside the GetNextPerson method of TakingTurnsQueue
+    //
+    // I changed the following:
+    //
+    //      if (person.Turns > 1)
+    //      {
+    //          person.Turns -= 1;
+    //          _people.Enqueue(person);
+    //      }
+    //
+    // to:
+    //
+    //      if (person.Turns < 1) {
+    //          _people.Enqueue(person);
+    //
+    //          return person;
+    //      }
+    //
+    //      person.Turns -= 1;
+    //
+    //      if (person.Turns >= 1) {
+    //          _people.Enqueue(person);
+    //      }
+    //
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
