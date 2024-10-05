@@ -64,6 +64,7 @@ public class Program
     }
     */
 
+    /*
     // W02: Interview question
     static void Main(string[] args)
     {
@@ -103,8 +104,42 @@ public class Program
             Console.WriteLine($"Planting: {seed}");
         }
     }
+    */
+
+    static void Main(string[] args)
+    {
+        HashSet<int> set1 = new HashSet<int>() { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18 };
+
+        HashSet<int> set2 = new HashSet<int>() { 0, 3, 6, 9, 12, 15, 18 };
+
+        HashSet<int> setIntersection = new HashSet<int>();
+
+        HashSet<int> setUnion = new HashSet<int>();
+
+        foreach (int item in set1)
+        {
+            if(set2.Contains(item)) {
+                setIntersection.Add(item);
+            }
+        }
+
+        Console.WriteLine(string.Join(", ", setIntersection));
+
+        foreach (int item in set1)
+        {
+            setUnion.Add(item);
+        }
+
+        foreach (int item in set2)
+        {
+            setUnion.Add(item);
+        }
+
+        Console.WriteLine(string.Join(", ", setUnion));
+    }
 }
 
+/*
 internal class Seed
 {
     internal string Name { get; set; }
@@ -121,3 +156,4 @@ internal class Seed
         return $"{Name} ({Quantity})";
     }
 }
+*/
