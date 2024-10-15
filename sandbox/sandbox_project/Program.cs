@@ -108,6 +108,9 @@ public class Program
 
     static void Main(string[] args)
     {
+        Console.WriteLine(Math.Pow(3, 2));
+
+        /*
         HashSet<int> set1 = new HashSet<int>() { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18 };
 
         HashSet<int> set2 = new HashSet<int>() { 0, 3, 6, 9, 12, 15, 18 };
@@ -136,6 +139,7 @@ public class Program
         }
 
         Console.WriteLine(string.Join(", ", setUnion));
+        */
     }
 }
 
